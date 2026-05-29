@@ -1,0 +1,51 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Job {
+  id           String       @id @default(uuid())
+  caseName     String
+  duration     Int          
+  locationType LocationType
+  roomLocation String
+  status       JobStatus    @default(NEW)
+  createdAt    DateTime     @default(now())
+  reporterId   String?
+  reporter     Reporter?    @relation(fields: [reporterId], references: [id])
+  editorId     String?
+  editor       Editor?      @relation(fields: [editorId], references: [id])
+  reporterRate  Float       @default(2000)
+  editorFlatFee Float       @default(50000)
+}
+
+model Reporter {
+  id           String   @id @default(uuid())
+  name         String
+  location     String
+  availability Boolean  @default(true)
+  jobs         Job[]    // Relasi satu reporter bisa memegang banyak job
+}
+
+model Editor {
+  id   String @id @default(uuid())
+  name String
+  jobs Job[]  // Relasi satu editor bisa mereview banyak transcript job
+}
+
+enum LocationType {
+  PHYSICAL
+  REMOTE
+}
+
+enum JobStatus {
+  NEW
+  ASSIGNED
+  TRANSCRIBED
+  REVIEWED
+  COMPLETED
+}

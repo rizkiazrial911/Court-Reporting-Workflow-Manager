@@ -1,0 +1,31 @@
+/* Custom Scrollbar untuk Sidebar atau Area Tabel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Navigasi Sidebar */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: #a0aec0;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  transition: all 0.2s;
+}
+.sidebar-link:hover, .sidebar-link.active {
+  background-color: #2d3748;
+  color: #ffffff;
+}
