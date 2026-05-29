@@ -1,5 +1,6 @@
 A clean, responsive single-page web panel built to give operational coordinators instant visual management over active court cases.
-
+## 📸 Preview
+![Court Reporting Agency Dashboard](./docs/Homepage.png)
 🚀 Getting Started
 1. Installation
 Navigate to the frontend directory and install the UI dependencies:
